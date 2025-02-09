@@ -1,2 +1,2 @@
-t<h2 align="center">PEGAS</h2>
-<div align="center"><img  src="" alt="Project Logo"></div>
+<h2 align="center">PEGAS</h2>
+<div align="center"><img  src="https://github.com/J0hnLenin/PEGAS/blob/main/logo.png" alt="Project Logo"></div>
