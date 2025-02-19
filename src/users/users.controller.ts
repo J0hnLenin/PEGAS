@@ -1,13 +1,14 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 
+
 interface User {
   name: string;
-  age?: number; // Опциональное поле
+  age?: number;
 }
 
 @Controller('users')
 export class UsersController {
-  private users: User[] = []; // Теперь массив имеет тип User[]
+  private users: User[] = [];
 
   @Get()
   getUsers(): User[] {
@@ -16,7 +17,7 @@ export class UsersController {
 
   @Post()
   createUser(@Body() user: User): User {
-    this.users.push(user); // Теперь ошибки нет
+    this.users.push(user);
     return user;
   }
 }
