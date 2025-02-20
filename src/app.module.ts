@@ -1,29 +1,21 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UsersController } from './users/users.controller';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.entity';
-import {UsersModule} from './users/users.module';
-import { DataSource } from 'typeorm';
+import { UserModule } from './user/user.module';
+import { AchievementModule } from './achievement/achievement.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'pgadmin',
-      password: 'pgadmin',
-      database: 'test',
-      entities: [User],
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities: [],
       synchronize: true,
+      autoLoadEntities: true,
     }),
-    UsersModule
+    UserModule,
+    AchievementModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {
-  constructor(private dataSource: DataSource) {}
-}
+export class AppModule {}
