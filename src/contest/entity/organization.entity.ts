@@ -10,7 +10,7 @@ export class Organization {
   @Column()
   organization: string;
 
-  @OneToMany(() => Contest, (contest) => contest.organizations)
+  @OneToMany(() => Contest, (contest) => contest.organization)
   contests: Contest[];
 
 }

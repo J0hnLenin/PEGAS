@@ -1,5 +1,6 @@
-import { ManyToOne, Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { OneToMany, ManyToOne, Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 import { Organization } from "./organization.entity";
+import { Statement } from "../../statement/entity/statement.entity";
 
 @Entity()
 export class Contest {
@@ -8,7 +9,7 @@ export class Contest {
   
   // организация
   @ManyToOne(() => Organization, (organization) => organization.contests)
-  organizations: Organization;
+  organization: Organization;
   
   // дата старт
   @CreateDateColumn()
@@ -22,5 +23,8 @@ export class Contest {
   @Column()
   directions: string;
   
+  @OneToMany(() => Statement, (statement) => statement.contest)
+  statements: Statement[];
+
 }
 
