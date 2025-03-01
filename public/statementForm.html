@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма для поиска</title>
+</head>
+<body>
+    <h1>Форма для поиска</h1>
+    <form id="statementForm" action="/statement" method="POST">
+        <div>
+            <label for="achievements">Количество достижений:</label>
+            <input type="number" id="achievements" name="achievements" placeholder="Введите количество">
+        </div>
+
+        <div>
+            <label for="name">ФИО:</label>
+            <input type="text" id="name" name="name" placeholder="Введите ФИО">
+        </div>
+
+        <div>
+            <label for="status">Статус заявления:</label>
+            <select id="status" name="status">
+                <option value=0>без разницы</option>
+                <option value=1>Новое</option>
+                <option value=2>На проверке</option>
+                <option value=3>Научная проверка</option>
+                <option value=4>На исправлении</option>
+                <option value=5>Обработано</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="optionSort">Сортировка по:</label>
+            <select id="optionSort" name="optionSort">
+                <option value="date">дата</option>
+                <option value="name">ФИО</option>
+                <option value="countAchievement">количество достижений</option>
+                <option value="status">статус</option>
+            </select>
+        </div>
+
+        <label for="optionStatus">Фильтрация:</label>
+        <label>
+            <input type="checkbox" name="optionStatus" value=1> Новое
+        </label>
+        <label>
+            <input type="checkbox" name="optionStatus" value=2> На проверке
+        </label>
+        <label>
+            <input type="checkbox" name="optionStatus" value=3> Научная проверка
+        </label>
+        <label>
+            <input type="checkbox" name="optionStatus" value=4> На исправлении
+        </label>
+        <label>
+            <input type="checkbox" name="optionStatus" value=5> Обработано
+        </label>
+
+        <div>
+            <button type="submit">Найти</button>
+        </div>
+    </form>
+    <div id="output"></div>
+    <script>
+    document.getElementById('statementForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+
+      fetch('/statement', {
+        method: 'POST',
+        body: JSON.stringify(Object.fromEntries(formData)),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        const outputElement = document.getElementById('output');
+        outputElement.innerHTML = '';
+        data.forEach((item) => {
+          const itemElement = document.createElement('div');
+          itemElement.innerHTML = `
+            <p>Дата заявления: ${new Date(item.statement_date).toLocaleDateString()}</p>
+            <p>Имя студента: ${item.student_name}</p>
+            <p>Статус: ${printStatus(item.status_id)}</p>
+            <p>Количество достижений: ${item.achievementcount}</p>
+            <hr>
+          `;
+          outputElement.appendChild(itemElement);
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+
+    function printStatus(status){
+      switch (status){
+        case 1:
+          return "Новое";
+          break;
+        case 2:
+          return "На проверке";
+          break;
+        case 3:
+          return "Научная проверка";
+          break;
+        case 4:
+          return "На исправлении";
+          break;
+        case 5:
+          return "Обработано";
+          break;
+        default:
+          return "";
+          break;
+      }
+    }    
+    </script>
+</body>
+</html>
