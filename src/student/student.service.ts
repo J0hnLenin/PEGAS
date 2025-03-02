@@ -10,5 +10,4 @@ export class StudentService {
     @InjectRepository(Student)
     private studentRepository: Repository<Student>,
   ) {}
-
 }

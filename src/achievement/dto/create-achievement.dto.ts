@@ -1,15 +1,24 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsDate, IsNumber, IsString, IsNotEmpty, IsEmail, MinLength, MaxLength } from 'class-validator';
 
 export class CreateAchievementDto {
-  @IsString()
+  @IsDate()
   @IsNotEmpty()
-  name: string;
-
-  @IsString()
-  @IsNotEmpty()
-  description: string;
+  startDate: Date;
 
   @IsNumber()
   @IsNotEmpty()
-  userId: number;
+  category: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  typeAchievement: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  level: number;
+  
+  @IsNumber()
+  @IsNotEmpty()
+  student: number;
+
 }
