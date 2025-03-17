@@ -1,7 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from 'typeorm';
 import {Category} from "./category.entity";
 import {Status} from "./status.entity";
-import {Application} from "../../applications/entities/application.entity";
 
 @Entity('achievements')
 export class Achievement {
