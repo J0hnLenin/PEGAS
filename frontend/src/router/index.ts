@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AppView from '../App.vue'
 
+import AppView from '../App.vue'
+import DocumentApplicationVue from '../DocumentApplication.vue'
+
+// Это пример кода, потом переделаем
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -10,9 +13,9 @@ const router = createRouter({
       component: AppView,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../App.vue'),
+      path: '/application',
+      name: 'application',
+      component: DocumentApplicationVue,
     },
   ],
 })

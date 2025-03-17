@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import icon from '../../../views/icon-item.vue'
+import icon from '../../../views/IconItem.vue'
 export default {
   name: 'PHeader',
   components: {
