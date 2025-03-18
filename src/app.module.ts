@@ -1,38 +1,34 @@
-import { Module, ValidationPipe } from '@nestjs/common';
+import { Module} from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { StudentModule } from "./student/student.module";
-import { ContestModule } from "./contest/contest.module";
-import { AchievementModule } from "./achievementTwo/achievement.module";
-import { StatementModule } from "./statement/statement.module";
+import { UsersModule } from './users/users.module';
+import { StudentBooksModule } from './studentbooks/studentbooks.module';
+import { ApplicationModule } from "./applications/application.module";
+import { AchievementsModule } from "./achievements/achievements.module";
+import { RolesModule } from "./roles/roles.module";
+import {CompetitionModule} from "./competition/competitionModule";
 
 @Module({
   imports: [
 
+    UsersModule,
+    StudentBooksModule,
+    AchievementsModule,
+    RolesModule,
+    CompetitionModule,
+    ApplicationModule,
+
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'PEGAS',
       entities: [],
       synchronize: true,
       autoLoadEntities: true,
     }),
 
-    /*TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: '1234',
-      database: 'test',
-      entities: [],
-      synchronize: true,
-      autoLoadEntities: true,
-    }), */
-    //UserModule,
-    //AchievementModule,
-    StudentModule,
-    ContestModule,
-    AchievementModule,
-    StatementModule,
   ],
   controllers: [],
   providers: [],
