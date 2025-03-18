@@ -26,7 +26,7 @@ export class Achievement {
     @ManyToOne(() => Status)
     status: Status;
 
-
+    //ToDO обновить сущность исходя из новых потребностей
     //ManyToMany applications
     //ToDo type_of_achievement
 }
