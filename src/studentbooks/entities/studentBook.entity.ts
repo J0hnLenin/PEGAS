@@ -24,5 +24,5 @@ export class StudentBook{
 
   @ManyToOne(() => AcademicDegree, (academic) => academic.id)
   academicDegree: AcademicDegree;
-
+  //toDo Обновить сущность исходя из потребностей ЕД
 }
