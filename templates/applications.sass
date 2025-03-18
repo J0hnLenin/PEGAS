@@ -1,0 +1,203 @@
+// -----------------------------
+// Переменные
+// -----------------------------
+$color-header-bg: #ffffff
+$color-main-bg: #f5f5f5
+$color-border: #e0e0e0
+$color-text: #333333
+$color-text-alt: #1E1E1E
+$color-light-gray: #F5F5F5
+
+$color-status-new: #FF9500
+$color-status-checking: #32ADE6
+$color-status-science: #AF52DE
+$color-status-fix: #A2845E
+$color-status-done: #009951
+
+$breakpoint: 1000px
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body 
+  font-family: Arial, sans-serif
+  color: $color-text
+  background-color: $color-main-bg
+
+
+.wrapper 
+    max-width: 1440px
+    margin: 0 auto
+    justify-content: center
+
+// -----------------------------
+// Шапка
+// -----------------------------
+.header
+
+  background-color: $color-header-bg
+  border-bottom: 1px solid $color-border
+
+  &__wrapper
+    display: flex
+    align-items: center
+    padding: 32px;
+
+  &__logo img 
+    max-height: 40px
+    margin-right: 8px
+
+  &__nav
+    ul
+      display: flex
+      list-style: none
+      gap: 8px
+
+      li
+        a
+          display: flex
+          padding: 10px 14px
+          text-decoration: none
+          color: $color-text
+          font-weight: 500
+          border-radius: 8px
+
+          &:hover
+            text-decoration: none
+            background-color: #F5F5F5
+
+  &__profile
+    display: flex
+    align-items: center
+    gap: 8px
+    margin-left: auto
+
+    .header__avatar
+      width: 40px
+      height: 40px
+      border-radius: 50%
+      overflow: hidden
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+  @media (max-width: $breakpoint)
+    flex-wrap: wrap
+    gap: 1rem
+
+    &__nav ul
+      flex-wrap: wrap
+      gap: 1rem
+// -----------------------------
+// Основная часть
+// -----------------------------
+.navig
+
+  &__wrapper
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 25px 45px
+
+    @media (max-width: $breakpoint)
+      flex-direction: column
+
+  &__left-button
+    background-color: $color-text-alt
+    color: $color-header-bg
+    display: flex
+    align-items: center
+    border-radius: 8px
+    padding: 12px
+    cursor: pointer
+    height: 56px
+    width:  170px
+
+  &__left-image
+    margin-right: 8px
+    height: 32px
+
+  &__right-button
+    background-color: $color-text-alt
+    color: $color-header-bg
+    display: flex
+    align-items: center
+    border-radius: 8px
+    padding: 20px
+    cursor: pointer
+    height: 56px
+    width:  170px
+
+    span
+      margin-right: 8px
+
+  &__right-image
+    height: 32px
+
+  &__text-decoration
+      justify-content: center
+      text-align: center
+      font-size: 20px
+      font-weight: bold
+
+.main
+  display: flex
+
+  &__wrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 24px
+    gap: 30px
+
+    @media (max-width: $breakpoint)
+      flex-direction: column
+
+.info
+  display: flex
+  flex-direction: column
+  gap: 5px
+  width: 530px
+  background-color: #ffffff
+  padding: 1rem
+  border: 1px solid $color-border
+  border-radius: 20px
+  height: 550px
+
+
+  &__text
+    text-align: start
+    padding: 10px
+    font-weight: bold
+    font-size: 20px
+
+  &__comment
+    padding-left: 10px
+
+  textarea
+    padding: 10px
+    font-size: 14px
+    border-radius: 5px
+    background-color: $color-header-bg
+    max-width: 470px
+    max-height: 250px
+
+.diplom
+  background-color: #D9D9D9
+  border-radius: 20px
+  width: 800px
+  flex: 1
+  display: flex
+  justify-content: center
+  align-items: center
+
+  img
+    height: 550px
+    max-width: 100%
+    padding: 100px
+
+
