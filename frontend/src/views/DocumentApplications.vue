@@ -90,9 +90,7 @@
                     <span class="content__member-order">7</span>
                     <span class="content__member-name"> Зимин Андрей Валерьевич </span>
                     <span class="content__member-date">15.02.2025</span>
-                    <div class="status status--new">
-                      <span>Новое</span>
-                    </div>
+                    <Status status="new" />
                   </div>
                 </li>
                 <li>
@@ -100,9 +98,7 @@
                     <span class="content__member-order">15</span>
                     <span class="content__member-name"> Жилин Андрей Игоревич </span>
                     <span class="content__member-date">10.02.2025</span>
-                    <div class="status status--checking">
-                      <span>На проверке</span>
-                    </div>
+                    <Status status="checking" />
                   </div>
                 </li>
                 <li>
@@ -110,9 +106,7 @@
                     <span class="content__member-order">10</span>
                     <span class="content__member-name"> Берюхов Никита Игоревич </span>
                     <span class="content__member-date">11.02.2025</span>
-                    <div class="status status--checking">
-                      <span>На проверке</span>
-                    </div>
+                    <Status status="checking" />
                   </div>
                 </li>
                 <li>
@@ -120,9 +114,7 @@
                     <span class="content__member-order">18</span>
                     <span class="content__member-name"> Лобова Татьяа Викторовна </span>
                     <span class="content__member-date">05.02.2025</span>
-                    <div class="status status--checking">
-                      <span>На проверке</span>
-                    </div>
+                    <Status status="checking" />
                   </div>
                 </li>
                 <li>
@@ -130,9 +122,7 @@
                     <span class="content__member-order">12</span>
                     <span class="content__member-name"> Артеев Артём Алексеевич </span>
                     <span class="content__member-date">30.01.2025</span>
-                    <div class="status status--fix">
-                      <span>На исправлении</span>
-                    </div>
+                    <Status status="fix" />
                   </div>
                 </li>
                 <li>
@@ -140,9 +130,7 @@
                     <span class="content__member-order">9</span>
                     <span class="content__member-name"> Спицын Виталий Алексеевич </span>
                     <span class="content__member-date">25.01.2025</span>
-                    <div class="status status--fix">
-                      <span>На исправлении</span>
-                    </div>
+                    <Status status="fix" />
                   </div>
                 </li>
                 <li>
@@ -150,9 +138,7 @@
                     <span class="content__member-order">54</span>
                     <span class="content__member-name"> Змановская Анастасия Петровна </span>
                     <span class="content__member-date">05.02.2025</span>
-                    <div class="status status--done">
-                      <span>Обработано</span>
-                    </div>
+                    <Status status="done" />
                   </div>
                 </li>
                 <li>
@@ -160,9 +146,7 @@
                     <span class="content__member-order">999</span>
                     <span class="content__member-name"> Зимина Илона Сергеевна </span>
                     <span class="content__member-date">04.02.2025</span>
-                    <div class="status status--done">
-                      <span>Обработано</span>
-                    </div>
+                    <Status status="done" />
                   </div>
                 </li>
               </ul>
@@ -214,21 +198,9 @@
 </template>
 
 <script setup lang="ts">
-// import { ref } from 'vue'
 import PLayout from '../components/PLayout/PLayout.vue'
 // import Icon from '../components/IconItem.vue'
-
-// const options = ref([
-//   { value: 'new', label: 'Новое', status: 'status--new', iconName: 'icon-status-new' },
-//   {
-//     value: 'checking',
-//     label: 'На проверке',
-//     status: 'status--checking',
-//     iconName: 'icon-status-checking',
-//   },
-//   { value: 'fix', label: 'На исправлении', status: 'status--fix', iconName: 'icon-status-fix' },
-//   { value: 'done', label: 'Обработано', status: 'status--done', iconName: 'icon-status-done' },
-// ])
+import Status from '../components/StatusItem.vue'
 </script>
 
 <style lang="sass">
@@ -240,14 +212,7 @@ $color-main-bg: #f5f5f5
 $color-border: #e0e0e0
 $color-text: #333333
 $color-text-alt: #1E1E1E
-
 $color-light-gray: #F5F5F5
-
-$color-status-new: #FF9500
-$color-status-checking: #32ADE6
-$color-status-science: #AF52DE
-$color-status-fix: #A2845E
-$color-status-done: #009951
 
 $breakpoint: 1000px
 
@@ -276,45 +241,6 @@ body
 
     @media (max-width: $breakpoint)
         flex-direction: column
-
-// -----------------------------
-// Статусы
-// -----------------------------
-.status
-  display: flex
-  justify-content: space-between
-  align-items: center
-  width: 185px
-  height: 32px
-  padding: 8px
-  color: $color-header-bg
-  font-size: 16px
-  border-radius: 8px
-  text-align: end
-  z-index: 1
-
-  &--new
-    background-color: $color-status-new
-
-  &--checking
-    background-color: $color-status-checking
-
-  &--fix
-    background-color: $color-status-fix
-
-  &--done
-    background-color: $color-status-done
-
-  svg
-    width: 16px
-    height: 16px
-
-  span
-    display: flex
-    align-items: center
-
-  input
-    display: none
 
 // -----------------------------
 // Фильтры (sidebar)
