@@ -4,6 +4,8 @@ import {AcademicDegree} from "./academicDegree.entity";
 import {Admission} from "./admission.entity";
 import {Curriculum} from "./curriculum.entity";
 import {Department} from "./department.entity";
+import {FormOfEducation} from "./formOfEducation.entity";
+import {BudgetLevel} from "./budgetLevel.entity";
 
 @Entity('studentBooks')
 export class StudentBook{
@@ -24,5 +26,11 @@ export class StudentBook{
 
   @ManyToOne(() => AcademicDegree, (academic) => academic.id)
   academicDegree: AcademicDegree;
-  //toDo Обновить сущность исходя из потребностей ЕД
+
+  @ManyToOne(() => FormOfEducation, (form) => form.id)
+  formOfEducation: FormOfEducation;
+
+  @ManyToOne(() => BudgetLevel, (budget) => budget.id)
+  budgetLevel: BudgetLevel;
+
 }
