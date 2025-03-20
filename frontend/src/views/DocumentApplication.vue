@@ -18,19 +18,13 @@
               <div class="custom-select">
                 <button
                   @click="toggleDropdown"
-                  class="select-button status"
                   role="combobox"
                   aria-label="select button"
                   aria-haspopup="listbox"
-                  :class="selectedStatus"
+                  :class="['status', selectedStatusClass, 'select-button']"
                   aria-controls="select-dropdown"
                 >
-                  <div class="status">
-                    <icon :iconName="selectedIcon" />
-                    <span class="selected-value">
-                      {{ selectedValue }}
-                    </span>
-                  </div>
+                  <Status :status="selectedOption" />
                   <span class="arrow" :class="{ 'arrow-rotated': isDropdownOpen }"></span>
                 </button>
                 <ul
@@ -42,14 +36,11 @@
                 >
                   <li
                     v-for="option in options"
-                    :key="option.value"
+                    :key="option"
                     role="option"
-                    @click="selectOption(option.value)"
+                    @click="selectOption(option)"
                   >
-                    <div :class="['status', option.status]">
-                      <icon :iconName="option.iconName" />
-                      <span>{{ option.label }}</span>
-                    </div>
+                    <Status :status="option" />
                   </li>
                 </ul>
               </div>
@@ -111,35 +102,24 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import PLayout from './components/PLayout/PLayout.vue'
-import Icon from './views/IconItem.vue'
+import PLayout from '../components/PLayout/PLayout.vue'
+// import Icon from '../components/IconItem.vue'
+import Status from '../components/StatusItem.vue'
 
 const isDropdownOpen = ref(false)
-const selectedValue = ref('')
-const selectedStatus = ref('')
-const selectedIcon = ref('')
-const options = ref([
-  { value: 'new', label: 'Новое', status: 'status--new', iconName: 'icon-status-new' },
-  {
-    value: 'checking',
-    label: 'На проверке',
-    status: 'status--checking',
-    iconName: 'icon-status-checking',
-  },
-  { value: 'fix', label: 'На исправлении', status: 'status--fix', iconName: 'icon-status-fix' },
-  { value: 'done', label: 'Обработано', status: 'status--done', iconName: 'icon-status-done' },
-])
+const options = ['new', 'checking', 'fix', 'done'] as const
+const selectedOption = ref<'new' | 'checking' | 'fix' | 'done'>(options[0])
+const selectedStatusClass = ref('status--new')
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
 }
 
 const selectOption = (value: string) => {
-  const selectedOption = options.value.find((option) => option.value === value)
-  if (selectedOption) {
-    selectedValue.value = selectedOption.label
-    selectedStatus.value = selectedOption.status
-    selectedIcon.value = selectedOption.iconName
+  const option = options.find((option) => option === value)
+  if (option !== undefined) {
+    selectedOption.value = option
+    selectedStatusClass.value = `status--${selectedOption.value}`
   }
   isDropdownOpen.value = false
 }
@@ -165,11 +145,6 @@ $color-main-bg: #f5f5f5
 $color-border: #e0e0e0
 $color-text: #333333
 $color-text-alt: #1E1E1E
-
-$color-status-new: #FF9500
-$color-status-checking: #32ADE6
-$color-status-fix: #A2845E
-$color-status-done: #009951
 
 *
   margin: 0
@@ -204,8 +179,8 @@ main
   margin: 30px auto
 
   section
+    margin: 30px 0 20px 0
     padding: 20px
-    margin: 30px 0 0 0
     background-color: $color-default
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
     border-radius: 10px
@@ -216,7 +191,6 @@ main
 
       div.column
         width: 50%
-
 
   nav
     margin: 30px 0 0 0
@@ -242,43 +216,6 @@ main
           color: $color-black
 
 // -----------------------------
-// Статусы
-// -----------------------------
-.status
-  display: flex
-  justify-content: space-between
-  align-items: center
-  width: 185px
-  height: 32px
-  padding: 8px
-  color: $color-header-bg
-  font-size: 16px
-  border-radius: 8px
-  text-align: end
-  z-index: 1
-
-  &--new
-    background-color: $color-status-new
-
-  &--checking
-    background-color: $color-status-checking
-
-  &--fix
-    background-color: $color-status-fix
-
-  &--done
-    background-color: $color-status-done
-
-  svg
-    width: 16px
-    height: 16px
-
-  span
-    display: flex
-    align-items: center
-
-
-// -----------------------------
 // Combo-box
 // -----------------------------
 .custom-select
@@ -290,14 +227,17 @@ main
 
 .select-button
   cursor: pointer
-  border: 1px solid #caced1
+  border: 0
   width: 215px
+  margin: 0
+  padding: 0
 
 .arrow
   border-left: 5px solid transparent
   border-right: 5px solid transparent
   border-top: 6px solid #000
   transition: transform ease-in-out 0.3s
+  margin:8px
 
 .select-dropdown
   position: absolute
@@ -339,7 +279,6 @@ main
 
 .select-button .arrow-rotated
   transform: rotate(0deg)
-
 
 // -----------------------------
 // Шапка заявления
