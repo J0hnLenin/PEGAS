@@ -6,6 +6,7 @@ import {Curriculum} from "./curriculum.entity";
 import {Department} from "./department.entity";
 import {FormOfEducation} from "./formOfEducation.entity";
 import {BudgetLevel} from "./budgetLevel.entity";
+import {BaseOfAdmission} from "./baseOfAdmission.entity";
 
 @Entity('studentBooks')
 export class StudentBook{
@@ -32,5 +33,8 @@ export class StudentBook{
 
   @ManyToOne(() => BudgetLevel, (budget) => budget.id)
   budgetLevel: BudgetLevel;
+
+  @ManyToOne(() => BaseOfAdmission, (baseOfAdmission) => baseOfAdmission.id)
+  baseOfAdmission: BaseOfAdmission;
 
 }
