@@ -2,7 +2,7 @@ import { Module} from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { StudentBooksModule } from './studentbooks/studentbooks.module';
-import { ApplicationModule } from "./applications/application.module";
+import { ApplicationsModule } from "./applications/applications.module";
 import { AchievementsModule } from "./achievements/achievements.module";
 import { RolesModule } from "./roles/roles.module";
 import {CompetitionModule} from "./competition/competitionModule";
@@ -15,7 +15,7 @@ import {CompetitionModule} from "./competition/competitionModule";
     AchievementsModule,
     RolesModule,
     CompetitionModule,
-    ApplicationModule,
+    ApplicationsModule,
 
     TypeOrmModule.forRoot({
       type: 'postgres',

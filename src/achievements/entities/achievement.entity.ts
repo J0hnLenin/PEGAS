@@ -1,6 +1,7 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany} from 'typeorm';
 import {Category} from "./category.entity";
 import {Status} from "./status.entity";
+import {Application} from "../../applications/entities/application.entity";
 
 @Entity('achievements')
 export class Achievement {
@@ -20,13 +21,15 @@ export class Achievement {
     details: JSON;
 
 
-    @ManyToOne(() => Category)
+    @ManyToOne(() => Category, { nullable: false })
     category: Category;
 
-    @ManyToOne(() => Status)
+    @ManyToOne(() => Status, { nullable: false })
     status: Status;
 
 
-    //ManyToMany applications
+    @ManyToMany(() => Application, application => application.achievements)
+    applications: Application[];
+
     //ToDo type_of_achievement
 }

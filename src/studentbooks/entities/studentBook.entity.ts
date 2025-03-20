@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, ManyToOne, Column} from 'typeorm';
 import {User} from "../../users/entities/user.entity";
 import {AcademicDegree} from "./academicDegree.entity";
 import {Admission} from "./admission.entity";
@@ -6,35 +6,39 @@ import {Curriculum} from "./curriculum.entity";
 import {Department} from "./department.entity";
 import {FormOfEducation} from "./formOfEducation.entity";
 import {BudgetLevel} from "./budgetLevel.entity";
-import {BaseOfAdmission} from "./baseOfAdmission.entity";
+
 
 @Entity('studentBooks')
 export class StudentBook{
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user) => user.id)
+  @ManyToOne(() => User,  { nullable: false })
     user: User;
 
-  @ManyToOne(() => Admission, (admission) => admission.id)
+  @Column()
+    course: string;
+
+  @Column()
+  is_active: boolean;
+
+  @ManyToOne(() => Admission,  { nullable: false })
   admission: Admission;
 
-  @ManyToOne(() => Curriculum, (curriculum) => curriculum.id)
+  @ManyToOne(() => Curriculum,  { nullable: false })
   curriculum: Curriculum;
 
-  @ManyToOne(() => Department, (department) => department.id)
+  @ManyToOne(() => Department,  { nullable: false })
   department: Department;
 
-  @ManyToOne(() => AcademicDegree, (academic) => academic.id)
+  @ManyToOne(() => AcademicDegree,  { nullable: false })
   academicDegree: AcademicDegree;
 
-  @ManyToOne(() => FormOfEducation, (form) => form.id)
+  @ManyToOne(() => FormOfEducation,  { nullable: false })
   formOfEducation: FormOfEducation;
 
-  @ManyToOne(() => BudgetLevel, (budget) => budget.id)
+  @ManyToOne(() => BudgetLevel,  { nullable: false })
   budgetLevel: BudgetLevel;
 
-  @ManyToOne(() => BaseOfAdmission, (baseOfAdmission) => baseOfAdmission.id)
-  baseOfAdmission: BaseOfAdmission;
 
 }

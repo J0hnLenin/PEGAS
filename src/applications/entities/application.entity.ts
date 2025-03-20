@@ -12,7 +12,7 @@ export class Application {
     @ManyToOne(() => Competition)
     competition: Competition;
 
-    @ManyToOne(() => StudentBook)
+    @ManyToOne(() => StudentBook, { nullable: false })
     student_book: StudentBook;
 
     @CreateDateColumn()
@@ -20,6 +20,6 @@ export class Application {
 
     @ManyToMany(() => Achievement)
     @JoinTable()
-    Achievements: Achievement[];
+    achievements: Achievement[];
 
 }
