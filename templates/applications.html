@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>first_list</title>
+    <title>second_list</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,243 +29,54 @@
             </div>
         </div>
     </header>
+    <div class="navig">
+        <div class="wrapper">
+            <div class="navig__wrapper">
+                <div class="navig__left-button">
+                    <div class="navig__left-image">
+                        <img src="static/left.svg" alt="">
+                    </div>
+                    <span>Предыдущее</span>
+                </div>
+
+                <div class="navig__text-decoration">
+                    <span>Достижение</span>
+                </div>
+
+                <div class="navig__right-button">
+                    <span>Следующее</span>
+                    <div class="navig__right-image">
+                        <img src="static/right.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <main class="main">
         <div class="wrapper">
             <div class="main__wrapper">
-                <aside class="filters">
-                    <form>
-                        <div class="filters__item">
-                            <span class="filters__item-title">Период</span>
-                            <div class="filters__period">
-                                <input type="date">
-                            </div>
+                <aside class="info">
+                        <div class="info__text">
+                            <span>ФИО: Берюхов Никита Игоревич</span>
                         </div>
-                        <div class="filters__item">
-                            <span class="filters__item-title">Статус</span>
-                            <div class="filters__statuses">
-                                <div class="status status--new filters__status">
-                                    <label>
-                                        <input type="checkbox" checked>
-                                        <span>Новое</span>
-                                    </label>
-                                </div>
-                                <div class="status status--checking filters__status">
-                                    <label>
-                                        <input type="checkbox" checked>
-                                        <span>На проверке</span>
-                                    </label>
-                                </div>
-                                <div class="status status--science filters__status">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span>Научная проверка</span>
-                                    </label>
-                                </div>
-                                <div class="status status--fix filters__status">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span>На исправлении</span>
-                                    </label>
-                                </div>
-                                <div class="status status--done filters__status">
-                                    <label>
-                                        <input type="checkbox">
-                                        <span>Обработано</span>
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="info__text">
+                            <span>Категория: учебная деятельность</span>
                         </div>
-                        <div class="filters__item">
-                            <span class="filters__item-title">Упорядочивание</span>
-                            <div class="fiters__order-list">
-                                <div class="filters__order-item">
-                                    <label>
-                                        <input type="radio" name="order" id="achievement">
-                                        <span>Количество достижений</span>
-                                    </label>
-                                </div>
-                                <div class="filters__order-item">
-                                    <label>
-                                        <input type="radio" name="order" id="fio">
-                                        <span>ФИО</span>
-                                    </label>
-                                </div>
-                                <div class="filters__order-item">
-                                    <label>
-                                        <input type="radio" name="order" id="date">
-                                        <span>Дата</span>
-                                    </label>
-                                </div>
-                                <div class="filters__order-item">
-                                    <label>
-                                        <input type="radio" name="order" id="status">
-                                        <span>Статус</span>
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="info__text">
+                            <span>Уровень достижения: международный</span>
                         </div>
-                    </form>
+                        <div class="info__text">
+                            <span>Дата получения: 01.01.2021</span>
+                        </div>
+                        <div class="info__text">
+                            <span>Описание:</span>
+                        </div>
+                        <div class="info__comment">
+                            <textarea name="comment" cols="55" rows="5">Диплом за 1 место в международном чемпионате по программированию ICPC, Екатеринбург</textarea>
+                        </div>
                 </aside>
-                <section class="content">
-                    <div class="content__search">
-                        <form>
-                            <input type="text" placeholder="Поиск">
-                        </form>
-                    </div>
-                    <div class="content__members">
-                        <ul>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">7</span>
-                                    <span class="content__member-name">
-                                        Зимин Андрей Валерьевич
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">15.02.2025</span>
-                                        <div class="status status--new">
-                                            <span>Новое</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">15</span>
-                                    <span class="content__member-name">
-                                        Жилин Андрей Игоревич
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">10.02.2025</span>
-                                        <div class="status status--checking">
-                                            <span>На проверке</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">10</span>
-                                    <span class="content__member-name">
-                                        Берюхов Никита Игоревич
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">11.02.2025</span>
-                                        <div class="status status--checking">
-                                            <span>На проверке</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">18</span>
-                                    <span class="content__member-name">
-                                        Лобова Татьяа Викторовна
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">05.02.2025</span>
-                                        <div class="status status--science">
-                                            <span>Научная проверка</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">12</span>
-                                    <span class="content__member-name">
-                                        Артеев Артём Алексеевич
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">30.01.2025</span>
-                                        <div class="status status--science">
-                                            <span>Научная проверка</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">9</span>
-                                    <span class="content__member-name">
-                                        Спицын Виталий Алексеевич
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">25.01.2025</span>
-                                        <div class="status status--fix">
-                                            <span>На исправлении</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">54</span>
-                                    <span class="content__member-name">
-                                        Змановская Анастасия Петровна
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">05.02.2025</span>
-                                        <div class="status status--done">
-                                            <span>Обработано</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__member">
-                                    <span class="content__member-order">999</span>
-                                    <span class="content__member-name">
-                                        Зимина Илона Сергеевна
-                                    </span>
-                                    <div class="content__member-info">
-                                        <span class="content__member-date">04.02.2025</span>
-                                        <div class="status status--done">
-                                            <span>Обработано</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    <div class="content__pagination">
-                        <ul>
-                            <li>
-                                <div class="content__pagination-item">
-                                    <a href="#">1</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__pagination-item">
-                                    <a href="#">2</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__pagination-item">
-                                    <a href="#">3</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__pagination-item">
-                                    <a href="#">4</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__pagination-item">
-                                    <a href="#">5</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__pagination-item">
-                                    <a href="#">...</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content__pagination-item">
-                                    <a href="#">1000</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                <section class="diplom">
+                    <img src="static/diplom.svg"> 
                 </section>
             </div>
         </div>
