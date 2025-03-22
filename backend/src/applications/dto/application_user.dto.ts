@@ -13,13 +13,13 @@ export class ApplicationDTO{
     @Transform(({obj} : {obj: Application}) => {
         return obj?.studentBook?.user?.name;
     })
-    user_name: string;
+    userName: string;
 
     @Expose()
     achievementCount: number;
 
     @Expose()
-    created_at: Date;
+    createdAt: Date;
 
     @Expose()
     @Transform(({obj} : {obj: Application}) => {
