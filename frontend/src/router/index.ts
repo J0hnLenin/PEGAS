@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AppView from '../views/App.vue'
 import DocumentApplicationVue from '../views/DocumentApplication.vue'
 import DocumentApplicationsVue from '../views/DocumentApplications.vue'
+import ApplicationsBackend from "@/views/ApplicationsBackend.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/applications',
       name: 'applications',
       component: DocumentApplicationsVue,
+    },
+    {
+      path: '/applications-backend',
+      name: 'applications-backend',
+      component: ApplicationsBackend,
     },
   ],
 })
