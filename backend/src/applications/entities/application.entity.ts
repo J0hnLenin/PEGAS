@@ -2,6 +2,7 @@ import {Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToMany, ManyToOne,
 import {Achievement} from "../../achievements/entities/achievement.entity";
 import {StudentBook} from "../../studentbooks/entities/studentBook.entity";
 import {Competition} from "../../competition/entities/comptetion.entity";
+import {Status} from "../../achievements/entities/status.entity";
 
 @Entity('applications')
 export class Application {
@@ -13,10 +14,13 @@ export class Application {
     competition: Competition;
 
     @ManyToOne(() => StudentBook, { nullable: false })
-    student_book: StudentBook;
+    studentBook: StudentBook;
 
     @CreateDateColumn()
     created_at: Date;
+
+    @ManyToOne(() => Status, { nullable: false, eager: true })
+    status: Status;
 
     @ManyToMany(() => Achievement)
     @JoinTable()

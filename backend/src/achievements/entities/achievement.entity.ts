@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, CreateDateColumn} from 'typeorm';
 import {Category} from "./category.entity";
 import {Status} from "./status.entity";
 import {Application} from "../../applications/entities/application.entity";
@@ -24,12 +24,12 @@ export class Achievement {
     @ManyToOne(() => Category, { nullable: false })
     category: Category;
 
-    @ManyToOne(() => Status, { nullable: false })
-    status: Status;
-
 
     @ManyToMany(() => Application, application => application.achievements)
     applications: Application[];
+
+    @CreateDateColumn()
+    created_at: Date;
 
     //ToDo type_of_achievement
 }
