@@ -1,7 +1,7 @@
 import {ReferenceEntity} from "../../common/abstract/reference.entity";
 import {Entity} from "typeorm";
 
-@Entity('admissions')
+@Entity('academic_degree')
 export class AcademicDegree extends ReferenceEntity {
 
 }
