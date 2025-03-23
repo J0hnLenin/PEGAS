@@ -17,7 +17,7 @@ export class Application {
     studentBook: StudentBook;
 
     @CreateDateColumn()
-    created_at: Date;
+    createdAt: Date;
 
     @ManyToOne(() => Status, { nullable: false, eager: true })
     status: Status;
