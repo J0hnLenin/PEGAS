@@ -199,16 +199,12 @@
 
 <script setup lang="ts">
 import PLayout from '../components/PLayout/PLayout.vue'
-// import Icon from '../components/IconItem.vue'
 import Status from '../components/StatusItem.vue'
 </script>
 
 <style lang="sass">
-// -----------------------------
-// Переменные
-// -----------------------------
 $color-header-bg: #ffffff
-$color-main-bg: #f5f5f5
+$color-main-bg:  #ededf0
 $color-border: #e0e0e0
 $color-text: #333333
 $color-text-alt: #1E1E1E
@@ -216,35 +212,6 @@ $color-light-gray: #F5F5F5
 
 $breakpoint: 1000px
 
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
-
-body
-  font-family: Arial, sans-serif
-  color: $color-text
-  background-color: $color-main-bg
-
-.wrapper
-  max-width: 1440px
-  margin: 0 auto
-  justify-content: center
-
-// -----------------------------
-// Основная часть
-// -----------------------------
-.main
-  &__wrapper
-    display: flex
-    gap: 30px
-
-    @media (max-width: $breakpoint)
-        flex-direction: column
-
-// -----------------------------
-// Фильтры (sidebar)
-// -----------------------------
 .filters
   width: 250px
   background-color: #ffffff

@@ -103,7 +103,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import PLayout from '../components/PLayout/PLayout.vue'
-// import Icon from '../components/IconItem.vue'
 import Status from '../components/StatusItem.vue'
 
 const isDropdownOpen = ref(false)
@@ -126,9 +125,6 @@ const selectOption = (value: string) => {
 </script>
 
 <style lang="sass">
-// -----------------------------
-// Переменные
-// -----------------------------
 $color-light-gray: #F5F5F5
 $color-black: #000000
 $color-blue: #005bff
@@ -141,39 +137,11 @@ $color-inactive: #828f9c
 
 $color-background: #ffffff
 $color-header-bg: #ffffff
-$color-main-bg: #f5f5f5
+$color-main-bg: #ededf0
 $color-border: #e0e0e0
 $color-text: #333333
 $color-text-alt: #1E1E1E
 
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
-
-body
-  background: $color-background
-
-#app
-  display: flex
-  flex-direction: column
-  justify-content: center
-  font-family: 'Arial', sans-serif
-  background-color: $color-background
-  color: #333
-  line-height: 1.6
-
-a
-  color: $color-black
-  padding: 0
-
-  &:hover
-    background-color: rgba(0, 0, 0, 0)
-    color: $color-utmn
-
-// -----------------------------
-// Главная часть
-// -----------------------------
 main
   max-width: 1200px
   margin: 30px auto
