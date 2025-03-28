@@ -125,63 +125,45 @@ const selectOption = (value: string) => {
 </script>
 
 <style lang="sass">
-$color-light-gray: #F5F5F5
-$color-black: #000000
-$color-blue: #005bff
+@use "../styles/colors.sass"
+@use "../styles/breakpoints.sass"
 
-$color-default: #ffffff
-$color-background: #ededf0
-$color-footer: #222222
-$color-utmn: #00aeef
-$color-inactive: #828f9c
+section
+  margin: 30px 0 20px 0
+  padding: 20px
+  background-color: colors.$default
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+  border-radius: 10px
 
-$color-background: #ffffff
-$color-header-bg: #ffffff
-$color-main-bg: #ededf0
-$color-border: #e0e0e0
-$color-text: #333333
-$color-text-alt: #1E1E1E
+  .info
+    display: flex
+    justify-content: space-between
 
-main
-  max-width: 1200px
-  margin: 30px auto
+    div.column
+      width: 50%
 
-  section
-    margin: 30px 0 20px 0
-    padding: 20px
-    background-color: $color-default
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
-    border-radius: 10px
+nav
+  margin: 30px 0 0 0
 
-    .info
-      display: flex
-      justify-content: space-between
+  ul
+    list-style: none
+    display: flex
+    gap: 25px
 
-      div.column
-        width: 50%
+    li
+      padding: 5px
 
-  nav
-    margin: 30px 0 0 0
+      a
+        text-decoration: none
+        color: colors.$inactive
+        font-size: 1.1rem
+        transition: color 0.3s
 
-    ul
-      list-style: none
-      display: flex
-      gap: 25px
+    li.active
+      border-bottom: 3px solid colors.$blue
 
-      li
-        padding: 5px
-
-        a
-          text-decoration: none
-          color: $color-inactive
-          font-size: 1.1rem
-          transition: color 0.3s
-
-      li.active
-        border-bottom: 3px solid $color-blue
-
-        a
-          color: $color-black
+      a
+        color: colors.$black
 
 // -----------------------------
 // Combo-box
@@ -291,7 +273,7 @@ tr
 // -----------------------------
 // Брейкпоины
 // -----------------------------
-@media (max-width: 768px)
+@include breakpoints.respond-to(md)
   header
     flex-direction: column
     text-align: center

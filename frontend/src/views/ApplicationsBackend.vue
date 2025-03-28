@@ -133,6 +133,7 @@ const fetchApplications = async () => {
       'http://localhost:3000/applications' // ToDo убрать захардкоженный эндпоинт
     );
     applications.value = response.data;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     const err = e;
     console.error('Ошибка при получении заявок:', err.message);

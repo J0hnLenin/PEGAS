@@ -203,20 +203,14 @@ import Status from '../components/StatusItem.vue'
 </script>
 
 <style lang="sass">
-$color-header-bg: #ffffff
-$color-main-bg:  #ededf0
-$color-border: #e0e0e0
-$color-text: #333333
-$color-text-alt: #1E1E1E
-$color-light-gray: #F5F5F5
-
-$breakpoint: 1000px
+@use "../styles/colors.sass"
+@use "../styles/breakpoints.sass"
 
 .filters
   width: 250px
   background-color: #ffffff
   padding: 1rem
-  border: 1px solid $color-border
+  border: 1px solid colors.$border
   border-radius: 10px
   height: fit-content
 
@@ -240,7 +234,7 @@ $breakpoint: 1000px
     input[type="date"]
       width: 250px
       padding: 0.5rem
-      border: 1px solid $color-border
+      border: 1px solid colors.$border
       border-radius: 10px
       font-size: 0.9rem
 
@@ -253,18 +247,18 @@ $breakpoint: 1000px
     display: flex
     align-items: center
     cursor: pointer
-    color: $color-text
+    color: colors.$text
     background-color: #F5F5F5
     width: 100%
     line-height: 1
     color: #757575
 
     &:has(input:checked)
-      color: $color-header-bg
+      color: colors.$header-bg
       background-color: #2C2C2C
 
       &::before
-        background-color: $color-header-bg
+        background-color: colors.$header-bg
 
     &::before
         background-color: #757575
@@ -282,16 +276,16 @@ $breakpoint: 1000px
         cursor: pointer
 
         input[type="radio"]
-          accent-color: $color-text
+          accent-color: colors.$text
           cursor: pointer
 
         span
           font-size: 0.9rem
 
-  @media (max-width: $breakpoint)
+  @include breakpoints.respond-to(md)
     width: 100%
     border-right: none
-    border-bottom: 1px solid $color-border
+    border-bottom: 1px solid colors.$border
 
 // -----------------------------
 // Контентная часть
@@ -303,7 +297,7 @@ $breakpoint: 1000px
     margin-bottom: 1rem
     width: 327px
     overflow: hidden
-    border: 1px solid $color-border
+    border: 1px solid colors.$border
     border-radius: 20px
     position: relative
     height: 40px
@@ -340,7 +334,7 @@ $breakpoint: 1000px
           min-width: 50vw
           gap: 1rem
           background-color: #ffffff
-          border: 1px solid $color-border
+          border: 1px solid colors.$border
           border-radius: 10px
           padding: 16px
 
@@ -349,7 +343,7 @@ $breakpoint: 1000px
             font-weight: 50
             display: flex
             justify-content: center
-            background-color: $color-light-gray
+            background-color: colors.$light-gray
             padding: 8px 7px
             border-radius: 8px
 
@@ -364,7 +358,7 @@ $breakpoint: 1000px
 
             .content__member-date
               font-size: 16px
-              color: $color-text-alt
+              color: colors.$text-alt
 
             .filters__status
               display: flex
@@ -409,9 +403,9 @@ $breakpoint: 1000px
             align-items: center
             padding: 8px
             background-color: #ffffff
-            border: 1px solid $color-border
+            border: 1px solid colors.$border
             border-radius: 8px
-            color: $color-text
+            color: colors.$text
             text-decoration: none
             transition: background-color 0.2s ease
 

@@ -5,22 +5,7 @@
 <script setup lang="ts"></script>
 
 <style lang="sass">
-$color-light-gray: #F5F5F5
-$color-black: #000000
-$color-blue: #005bff
-
-$color-default: #ffffff
-$color-background: #ededf0
-$color-footer: #222222
-$color-utmn: #00aeef
-$color-inactive: #828f9c
-
-$color-background: #ffffff
-$color-header-bg: #ffffff
-$color-main-bg: #ededf0
-$color-border: #e0e0e0
-$color-text: #333333
-$color-text-alt: #1E1E1E
+@use "../styles/colors.sass"
 
 *
   margin: 0
@@ -28,26 +13,26 @@ $color-text-alt: #1E1E1E
   box-sizing: border-box
 
 body
-  background: $color-background
+  background: colors.$background
 
 #app
   display: flex
   flex-direction: column
   justify-content: center
   font-family: 'Arial', sans-serif
-  background-color: $color-main-bg
+  background-color: colors.$main-bg
   color: #333
   line-height: 1.6
 
 a
-  color: $color-black
+  color: colors.$black
   padding: 0
 
   &:hover
     background-color: rgba(0, 0, 0, 0)
-    color: $color-utmn
+    color: colors.$utmn
 
 main
   max-width: 1200px
-  margin: 30px auto
+  margin: 30px auto  
 </style>
