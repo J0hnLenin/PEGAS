@@ -85,11 +85,11 @@
             </div>
             <div class="content__members">
               <ul v-if="applications.length > 0">
-                <li  v-for="app in applications" :key="app.id">
+                <li v-for="app in applications" :key="app.id">
                   <div class="content__member">
-                  <span class="content__member-order">{{app.achievementCount}}</span>
+                  <span class="content__member-order">{{ app.achievementCount }}</span>
                   <span class="content__member-name"> {{ app.userName }}  </span>
-                  <span class="content__member-date">{{ formatDate(app.createdAt) }}</span>
+                  <span class="content__member-date">{{ Format.formatDate(app.createdAt) }}</span>
                   <Status status="new" />
                   </div>
                 </li>
@@ -109,50 +109,20 @@
 <script setup lang="ts">
 import PLayout from '../components/PLayout/PLayout.vue';
 import Status from '../components/StatusItem.vue'
-import axios from 'axios';
+
 import { ref, onMounted } from 'vue';
+import { type Applications } from '@/interfaces/InterfaceApplication';
+import { ApiService } from '@/scripts/api';
+import { Format } from '@/scripts/format'
 
-interface Application {
-  id: number;
-  userName: string;
-  status: string;
-  achievementCount: number;
-  createdAt: string;
-}
-
-const applications = ref<Application[]>([]);
+const applications = ref<Applications[]>([]);
 const loading = ref(true);
 const error = ref<string | null>(null);
 
-const fetchApplications = async () => {
-  loading.value = true;
-  error.value = null;
-
-  try {
-    const response = await axios.get(
-      'http://localhost:3000/applications' // ToDo убрать захардкоженный эндпоинт
-    );
-    applications.value = response.data;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (e: any) {
-    const err = e;
-    console.error('Ошибка при получении заявок:', err.message);
-    error.value = err.message || 'Произошла ошибка при загрузке данных.';
-  } finally {
-    loading.value = false;
-  }
-};
-
-const formatDate = (dateString: string): string => {
-  console.log(dateString);
-  const date = new Date(dateString);
-
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('ru-RU', options);
-};
+const apiService = new ApiService('http://localhost:3000');
 
 onMounted(() => {
-  fetchApplications();
+  apiService.fetchArrayOfObjects('/applications', applications, loading, error);
 });
 </script>
 
