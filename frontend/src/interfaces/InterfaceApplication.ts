@@ -17,7 +17,7 @@ export interface UserApplications {
 export interface ApplicationDetails {
   id: number;
   userName: string;
-  departament: string;
+  department: string;
   curriculum: string;
   courseNumber: number;
   formOfEducation: string;
