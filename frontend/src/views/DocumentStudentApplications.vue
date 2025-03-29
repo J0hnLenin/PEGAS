@@ -2,15 +2,16 @@
   <PLayout>
     <main class="main">
       <div class="wrapper">
-        <div class="buttons__wrapper">
-          <button class="new-application">Подать заявление</button>
-        </div>
+        
         <div class="main__wrapper">
           <section class="content">
-            <div class="content__search">
-              <form>
-                <input type="text" placeholder="Поиск" />
-              </form>
+            <div class="buttons-panel">
+              <div class="search-box">
+                <form>
+                  <input type="text" placeholder="Поиск" />
+                </form>
+              </div>
+              <button class="new-application">Подать заявление</button>
             </div>
             <div class="content__members">
               <ul>
@@ -110,13 +111,16 @@ import Status from '../components/StatusItem.vue'
 @use "../styles/colors.sass"
 @use "../styles/breakpoints.sass"
 
-.buttons__wrapper
+.buttons-panel
   display: flex
-  justify-content: center
+  justify-content: space-between
+  vertical-align: middle
+  align-items: center
   
   button.new-application
+    margin-bottom: 1rem
     width: 300px
-    padding: 20px
+    padding: 10px
     color: #ffffff
     background-color: #009951
     border-radius: 10px
@@ -127,16 +131,13 @@ import Status from '../components/StatusItem.vue'
   button.new-application:hover
       box-shadow: 0 0 0 3px #009951
 
-.content
-  flex: 1
-
-  &__search
+  .search-box
     margin-bottom: 1rem
     width: 327px
     overflow: hidden
     border: 1px solid colors.$border
     border-radius: 20px
-    position: relative
+    position: flex
     height: 40px
 
     input
@@ -146,14 +147,28 @@ import Status from '../components/StatusItem.vue'
       border: none
 
       &::placeholder
-          position: absolute
-          left: 20px
           color: #999999
           font-size: 16px
 
       &:active, &:focus, &:focus-visible, &:focus-within
           border: none
           outline: none
+  @include breakpoints.respond-to(md)
+    flex-direction: column
+    
+    button.new-application
+      width: 100%
+      border-radius: 10px
+      padding: 15px
+
+    .search-box
+      width: 100%
+      
+      input
+        width: 100%
+
+.content
+  flex: 1
 
   &__members
     ul
