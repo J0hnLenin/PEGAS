@@ -24,6 +24,7 @@
 
 <script lang="ts">
 import icon from '../../IconItem.vue'
+
 export default {
   name: 'PHeader',
   components: {
@@ -33,11 +34,11 @@ export default {
 </script>
 
 <style lang="sass">
-$color-default: #ffffff
-$color-text: #333333
+@use "../../../styles/colors.sass"
+@use "../../../styles/breakpoints.sass"
 
 header
-  background-color: $color-default
+  background-color: colors.$default
   padding: 15px 30px
   display: flex
   justify-content: space-between
@@ -63,7 +64,7 @@ header
         li a
           text-decoration: none
           font-weight: 500
-          color: $color-text
+          color: colors.$text
           transition: color 0.3s
 
     .user
@@ -73,10 +74,17 @@ header
       svg
         width: 40px
         height: 40px
-        color: black
+        color: colors.$black
 
       a
         margin: 0 10px 0 10px
         font-weight: 500
-        color: $color-text
+        color: colors.$text
+
+@include breakpoints.respond-to(md)
+  div
+    .logo
+      display: none 
+    svg
+      display: none
 </style>

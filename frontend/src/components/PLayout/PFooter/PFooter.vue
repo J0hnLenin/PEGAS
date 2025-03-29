@@ -11,14 +11,13 @@ export default {
 </script>
 
 <style lang="sass">
-$color-default: #ffffff
-$color-footer: #222222
+@use "../../../styles/colors.sass"
 
 footer
   text-align: center
   padding: 32px
-  background-color: $color-footer
-  color: $color-default
+  background-color: colors.$footer
+  color: colors.$default
   margin-top: 40px
 
   p

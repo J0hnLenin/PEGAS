@@ -103,7 +103,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import PLayout from '../components/PLayout/PLayout.vue'
-// import Icon from '../components/IconItem.vue'
 import Status from '../components/StatusItem.vue'
 
 const isDropdownOpen = ref(false)
@@ -126,94 +125,45 @@ const selectOption = (value: string) => {
 </script>
 
 <style lang="sass">
-// -----------------------------
-// Переменные
-// -----------------------------
-$color-light-gray: #F5F5F5
-$color-black: #000000
-$color-blue: #005bff
+@use "../styles/colors.sass"
+@use "../styles/breakpoints.sass"
 
-$color-default: #ffffff
-$color-background: #ededf0
-$color-footer: #222222
-$color-utmn: #00aeef
-$color-inactive: #828f9c
+section
+  margin: 30px 0 20px 0
+  padding: 20px
+  background-color: colors.$default
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+  border-radius: 10px
 
-$color-background: #ffffff
-$color-header-bg: #ffffff
-$color-main-bg: #f5f5f5
-$color-border: #e0e0e0
-$color-text: #333333
-$color-text-alt: #1E1E1E
+  .info
+    display: flex
+    justify-content: space-between
 
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
+    div.column
+      width: 50%
 
-body
-  background: $color-background
+nav
+  margin: 30px 0 0 0
 
-#app
-  display: flex
-  flex-direction: column
-  justify-content: center
-  font-family: 'Arial', sans-serif
-  background-color: $color-background
-  color: #333
-  line-height: 1.6
+  ul
+    list-style: none
+    display: flex
+    gap: 25px
 
-a
-  color: $color-black
-  padding: 0
+    li
+      padding: 5px
 
-  &:hover
-    background-color: rgba(0, 0, 0, 0)
-    color: $color-utmn
+      a
+        text-decoration: none
+        color: colors.$inactive
+        font-size: 1.1rem
+        transition: color 0.3s
 
-// -----------------------------
-// Главная часть
-// -----------------------------
-main
-  max-width: 1200px
-  margin: 30px auto
+    li.active
+      border-bottom: 3px solid colors.$blue
 
-  section
-    margin: 30px 0 20px 0
-    padding: 20px
-    background-color: $color-default
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
-    border-radius: 10px
-
-    .info
-      display: flex
-      justify-content: space-between
-
-      div.column
-        width: 50%
-
-  nav
-    margin: 30px 0 0 0
-
-    ul
-      list-style: none
-      display: flex
-      gap: 25px
-
-      li
-        padding: 5px
-
-        a
-          text-decoration: none
-          color: $color-inactive
-          font-size: 1.1rem
-          transition: color 0.3s
-
-      li.active
-        border-bottom: 3px solid $color-blue
-
-        a
-          color: $color-black
+      a
+        color: colors.$black
 
 // -----------------------------
 // Combo-box
@@ -323,7 +273,7 @@ tr
 // -----------------------------
 // Брейкпоины
 // -----------------------------
-@media (max-width: 768px)
+@include breakpoints.respond-to(md)
   header
     flex-direction: column
     text-align: center
